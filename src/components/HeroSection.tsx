@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Heart, Star } from 'lucide-react';
 
 // Import images
-import img1 from "@/components/ui/images/12.jpg";
+import img1 from "@/components/ui/images/20.jpg";
 import img2 from "@/components/ui/images/13.jpg";
 import img3 from "@/components/ui/images/14.jpg";
 import img4 from "@/components/ui/images/15.jpg";

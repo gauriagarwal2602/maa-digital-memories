@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Card } from "@/components/ui/card";
+import img9 from "@/components/ui/images/9.jpg";
 
 const BirthdayNewspaper = () => {
   const historicalEvents = [
@@ -47,21 +47,7 @@ const BirthdayNewspaper = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Historical Events */}
-            <div className="md:col-span-2">
-              <h3 className="text-xl font-serif font-bold border-b-2 border-gray-300 pb-2 mb-4">
-                TODAY IN HISTORY - JUNE 2ND
-              </h3>
-              <ul className="space-y-2 text-sm font-serif">
-                {historicalEvents.map((event, index) => (
-                  <li key={index} className="border-b border-gray-200 pb-2">
-                    <span className="font-semibold">{event}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Sidebar */}
+            {/* Left Sidebar - Horoscope and Weather */}
             <div>
               {/* Horoscope */}
               <div className="mb-6">
@@ -69,7 +55,7 @@ const BirthdayNewspaper = () => {
                   GEMINI FORECAST ♊
                 </h3>
                 <p className="text-sm font-serif leading-relaxed">
-                  Today brings extraordinary joy and celebration! Your natural charm and intelligence shine brighter than ever. Family connections grow stronger, and your nurturing spirit touches many hearts. Expect unexpected gifts of love and appreciation. Lucky color: Rose gold.
+                  Today brings extraordinary joy and celebration! Your natural charm and intelligence shine brighter than ever. Family connections grow stronger, and your nurturing spirit touches many hearts. Expect unexpected gifts of love and appreciation. 
                 </p>
               </div>
 
@@ -84,13 +70,27 @@ const BirthdayNewspaper = () => {
                   <p><strong>This Week:</strong> Warm hearts all around</p>
                 </div>
               </div>
+            </div>
+
+            {/* Main Content - Historical Events */}
+            <div className="md:col-span-2">
+              <h3 className="text-xl font-serif font-bold border-b-2 border-gray-300 pb-2 mb-4">
+                TODAY IN HISTORY - JUNE 2ND
+              </h3>
+              <ul className="space-y-2 text-sm font-serif">
+                {historicalEvents.map((event, index) => (
+                  <li key={index} className="border-b border-gray-200 pb-2">
+                    <span className="font-semibold">{event}</span>
+                  </li>
+                ))}
+              </ul>
 
               {/* Photo Placeholder */}
-              <div className="border-2 border-gray-400 p-4 text-center">
+              <div className="text-center mt-6">
                 <img 
-                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+                  src={img9}
                   alt="Birthday celebration"
-                  className="w-full h-32 object-cover rounded mb-2"
+                  className="w-full max-w-[300px] h-auto max-h-[200px] object-contain rounded mb-2 mx-auto"
                 />
                 <p className="text-xs font-serif italic">The woman of the hour: A lifetime of love and memories</p>
               </div>

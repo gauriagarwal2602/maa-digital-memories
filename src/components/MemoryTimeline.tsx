@@ -1,85 +1,95 @@
-
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Card } from "@/components/ui/card";
-import { Heart } from 'lucide-react';
+
+// Import images
+import img1 from "@/components/ui/images/1.jpg";
+import img2 from "@/components/ui/images/2.jpg";
+import img3 from "@/components/ui/images/3.jpg";
+import img4 from "@/components/ui/images/4.jpg";
+import img5 from "@/components/ui/images/5.jpg";
+import img6 from "@/components/ui/images/6.jpg";
+import img7 from "@/components/ui/images/7.jpg";
+import img8 from "@/components/ui/images/8.jpg";
+import img9 from "@/components/ui/images/9.jpg";
+import img10 from "@/components/ui/images/10.jpg";
+import img11 from "@/components/ui/images/11.jpg";
+import img12 from "@/components/ui/images/12.jpg";
+import img13 from "@/components/ui/images/13.jpg";
+import img14 from "@/components/ui/images/14.jpg";
+import img15 from "@/components/ui/images/15.jpg";
+import img16 from "@/components/ui/images/16.jpg";
+import img17 from "@/components/ui/images/17.jpg";
+import img18 from "@/components/ui/images/18.jpg";
+import img19 from "@/components/ui/images/19.jpg";
+import img20 from "@/components/ui/images/20.jpg";
+import img21 from "@/components/ui/images/21.jpg";
+import img22 from "@/components/ui/images/22.jpg";
+
+const memories = [
+  { id: 1, image: img1 },
+  { id: 2, image: img2 },
+  { id: 3, image: img3 },
+  { id: 4, image: img4 },
+  { id: 5, image: img5 },
+  { id: 6, image: img6 },
+  { id: 7, image: img7 },
+  { id: 8, image: img8 },
+  { id: 10, image: img10 },
+  { id: 11, image: img11 }
+];
 
 const MemoryTimeline = () => {
-  const memories = [
-    {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
-      caption: "My first steps with you holding my hands 👶",
-      year: "Early Years"
-    },
-    {
-      id: 2,
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-      caption: "School days and your packed lunches 🎒",
-      year: "School Days"
-    },
-    {
-      id: 3,
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      caption: "Festival celebrations and your beautiful smile 🎉",
-      year: "Festivals"
-    },
-    {
-      id: 4,
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
-      caption: "Family trips and endless laughter 🚗",
-      year: "Adventures"
-    },
-    {
-      id: 5,
-      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
-      caption: "Late night talks and midnight snacks 🌙",
-      year: "Heart-to-Hearts"
-    },
-    {
-      id: 6,
-      image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23",
-      caption: "Your proud moments watching me grow 🌱",
-      year: "Milestones"
-    },
-    {
-      id: 7,
-      image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d",
-      caption: "Today and always, my inspiration 💫",
-      year: "Forever"
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scroll, setScroll] = useState(0);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      const scrollPercentage = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+      setScroll(scrollPercentage);
     }
-  ];
+  };
 
   return (
     <div className="container mx-auto px-4">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-purple-800 mb-4">
-          Our Beautiful Journey
+      <div className="text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-2">
+          Swipe through these precious moments we've shared together over the years.
         </h2>
-        <p className="text-xl text-gray-600">Precious moments we've shared together</p>
       </div>
-      
-      <div className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide">
-        {memories.map((memory, index) => (
-          <Card key={memory.id} className="min-w-80 bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
-            <div className="relative">
-              <img 
-                src={memory.image} 
-                alt={memory.caption}
-                className="w-full h-64 object-cover"
-              />
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                <span className="text-sm font-semibold text-purple-600">{memory.year}</span>
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Heart className="text-pink-500 w-5 h-5" />
-                <span className="text-lg font-semibold text-gray-800">Memory #{index + 1}</span>
-              </div>
-              <p className="text-gray-600 text-lg leading-relaxed">{memory.caption}</p>
-            </div>
-          </Card>
+
+      {/* Images Container */}
+      <div
+        className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide snap-x snap-mandatory max-w-6xl mx-auto"
+        ref={scrollRef}
+        onScroll={handleScroll}
+      >
+        {memories.map((memory) => (
+          <div
+            key={memory.id}
+            className="min-w-[300px] max-w-xs rounded-2xl overflow-hidden snap-center flex-shrink-0 hover:scale-105 transition-all duration-300"
+          >
+            <img
+              src={memory.image}
+              alt={`Memory ${memory.id}`}
+              className="w-full h-64 object-cover"
+            />
+          </div>
         ))}
+      </div>
+
+      {/* Progress Bar - Moved below images */}
+      <div className="w-full max-w-2xl mx-auto h-2 bg-pink-100 rounded-full mt-6 mb-4 relative">
+        <div
+          className="h-2 bg-pink-300 rounded-full transition-all duration-300"
+          style={{ width: `${scroll * 100}%` }}
+        ></div>
+      </div>
+
+      {/* Navigation Hint */}
+      <div className="text-center text-pink-400 font-script text-lg mt-2">
+        &larr; Swipe to see more memories &rarr;
       </div>
     </div>
   );
